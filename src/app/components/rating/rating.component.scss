@@ -1,0 +1,21 @@
+.mat-icon-button {
+    padding: 0;
+    min-width: 22px;
+    width:auto;
+    height: 40px;
+    flex-shrink: 7;
+    line-height: 40px;
+    border-radius: 50%;
+
+  }
+  
+  .mat-icon-button ::ng-deep .mat-button-focus-overlay {
+    display: none;
+}
+
+button.star {
+  background: transparent;
+  border-radius: 50%;
+  border-color: transparent;
+  padding: 0;
+}

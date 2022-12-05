@@ -1,0 +1,89 @@
+mat-toolbar {
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  background: none;
+  // outline: 1px solid red;
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn {
+    text-decoration: none;
+    color: inherit;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 4px 10px;
+    border-color: transparent;
+
+    &.active {
+      background: rgba(102, 106, 114, 0.279);
+    }
+
+    &:hover {
+      background: rgba(102, 106, 114, 0.279);
+    }
+
+    &.signup {
+      border-color: rgba(216, 142, 114, 1);
+
+      &:hover {
+        background-color: rgba(216, 142, 114, 1);
+        color: white;
+      }
+
+      &.active {
+        background-color: rgba(216, 142, 114, 1);
+        color: white;
+      }
+    }
+
+    &.user {
+      margin-left: 10px;
+      background-color: rgba(216, 142, 114, 1);
+      color: white;
+      border: 1px solid rgba(216, 142, 114, 1);
+
+      &:hover {
+        background-color: rgba(216, 142, 114, 1);
+        cursor: default;
+      }
+    }
+
+    &.logout,
+    &.login {
+      cursor: pointer;
+      
+      &:hover {
+        border: 1px solid rgba(216, 142, 114, 1);
+        background-color: rgba(216, 142, 114, 0.3);
+        // color: white;
+      }
+    }
+
+    &.login {
+      margin-left: 10px;
+    }
+  }
+
+  .verticalRuler {
+    background: rgba(63, 63, 63, 1);
+    width: 1px;
+    height: 82px;
+    display: inline-block;
+  }
+
+  .logo {
+    width: 80px;
+    height: auto;
+  }
+}

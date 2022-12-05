@@ -1,0 +1,59 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container {
+  align-self: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 250px;
+  padding: 21.5px;
+  border-radius: 5px;
+  background: rgba(102, 106, 114, 0.116);
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  margin-top: 50px;
+  font-family: inherit;
+
+  h4 {
+    // font-family: inherit;
+    // margin: 0 0 12px 12px;
+    margin: 0 auto 18px;
+    font-weight: 400;
+
+    // margin: 0 auto 16px;
+
+    font-size: 20px;
+  }
+
+  
+  .hr {
+    height: 1px;
+    background: rgba(102, 106, 114, 0.8);
+    margin-bottom: 20px;
+    display: none;
+  }
+  
+  ::ng-deep .mat-form-field-subscript-wrapper {
+    margin-top: 3px;
+  }
+}
+
+.mat-button-disabled:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+button.submit {
+  background: rgba(216, 142, 114, 1);
+  font-family: inherit;
+
+  &:hover {
+    background: rgba(216, 142, 114, 0.8);
+  }
+}

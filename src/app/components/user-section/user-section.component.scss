@@ -1,0 +1,36 @@
+.user-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 100px;
+}
+
+a {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-decoration: none;
+    background: white;
+    margin: 20px;
+    width: 100px;
+    min-width: 100px;
+    border-radius: 4px;
+    box-shadow: 0 0 3px gray;
+    padding: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    transition: .05s linear;
+    
+    &:hover {
+        background: rgba(0, 0, 0, 0.05);
+        transform: scale(1.05);
+    }
+
+}
+
+h3 {
+    font-size: 17px;
+    text-align: center;
+    font-weight: 400;
+    margin: 20px 0 0;
+}

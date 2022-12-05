@@ -1,0 +1,39 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="updateUserForm">
+        <h4>Personal details</h4>
+        <div class="hr"></div>
+        <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput type="text" formControlName="firstName" required>
+
+            <mat-error *ngIf="firstName.errors && firstName.errors['required']">First name is required</mat-error>
+            <mat-error *ngIf="firstName.errors && firstName.errors['minlength']">First name must have at least
+                {{firstName.errors['minlength']['requiredLength']}} characters</mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput type="text" formControlName="lastName" required>
+
+            <mat-error *ngIf="lastName.errors && lastName.errors['required']">Last name is required</mat-error>
+            <mat-error *ngIf="lastName.errors && lastName.errors['minlength']">Last name must have at least
+                {{lastName.errors['minlength']['requiredLength']}} characters</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Phone number ( +421... )</mat-label>
+            <input matInput type="text" formControlName="phoneNumber">
+            <mat-error *ngIf="phoneNumber.errors && phoneNumber.errors['required']">Phone number is required</mat-error>
+            <mat-error *ngIf="phoneNumber.errors && phoneNumber.errors['pattern']">
+                Please enter a valid phone number.
+            </mat-error>
+        </mat-form-field>
+
+    
+
+        <button type="submit" class="submit" mat-raised-button color="primary"
+        [disabled]="updateUserForm.invalid">Save</button>
+    </form>
+</div>
+<!-- TODO: push data -->

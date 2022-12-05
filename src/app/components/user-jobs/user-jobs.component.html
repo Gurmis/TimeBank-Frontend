@@ -1,0 +1,124 @@
+<div class="container">
+  
+  
+  <div class="container table">
+    <h2>Available Jobs of: &nbsp;&nbsp; {{user?.firstName}} {{user?.lastName}} &nbsp;☎{{user?.phoneNumber}}</h2>
+    <mat-form-field class="filterInput" appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input />
+    </mat-form-field>
+
+    <table
+      class="table jobsList"
+      mat-table
+      [dataSource]="userJobsDataSource"
+      multiTemplateDataRows
+      class="mat-elevation-z8"
+    >
+      <ng-container
+        matColumnDef="{{ column }}"
+        *ngFor="let column of columnsToDisplay"
+      >
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element" >{{ element[column] }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+          &nbsp;
+        </th>
+
+        <td class="right" mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            aria-label="expand row"
+            (click)="
+            
+              expandedElement = expandedElement === element ? null : element;
+              $event.stopPropagation()
+            "
+          >
+            <mat-icon *ngIf="expandedElement !== element"
+              >keyboard_arrow_down</mat-icon
+            >
+            <mat-icon *ngIf="expandedElement === element"
+              >keyboard_arrow_up</mat-icon
+            >
+          </button>
+
+          <app-rating
+            class="rating"
+            [rating]="element.averageRating"
+            [starCount]="starCount"
+            [ratingDisabled]="ratingDisabled"
+            (ratingUpdated)="onRatingChanged($event)"
+          ></app-rating>
+        </td>
+      </ng-container>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [attr.colspan]="columnsToDisplayWithExpand.length"
+        >
+          <div
+            class="example-element-detail"
+            [@detailExpand]="
+              element == expandedElement ? 'expanded' : 'collapsed'
+            "
+          >
+            <div class="left">
+              <p class="description">{{ element.description }}</p>
+              <p class="estimate">
+                Estimated hours: {{ element.duration }}
+              </p>
+              
+            </div>
+
+            <div class="right container">
+              <p class="likes">
+                <mat-icon>thumb_up</mat-icon><span>{{ element.likesCount || 0 }}</span>
+              </p>
+              <button
+                class="btn-order"
+                (click)="openDialog(element, '500ms', '500ms')"
+                mat-raised-button
+              >
+                Rate Job
+              </button>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: columnsToDisplayWithExpand"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="
+          
+          expandedElement = expandedElement === element ? null : element
+        "
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="example-detail-row"
+      ></tr>
+    </table>
+  </div>
+
+  
+  <a class="btn back" routerLink="/jobs" routerLinkActive="active"><mat-icon>keyboard_return</mat-icon>Back to All Jobs</a>
+
+  <!-- <ul>
+    <li *ngFor="let item of jobsList">
+      {{ item | json }}
+    </li>
+  </ul> -->
+</div>
+  

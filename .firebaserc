@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "timebank-fe": {
+      "hosting": {
+        "Timebank-Frontend-PG": [
+          "timebank-fe"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "timebank-fe"
+  }
+}

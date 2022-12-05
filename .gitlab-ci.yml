@@ -1,0 +1,32 @@
+image: node:16-alpine3.15
+stages:
+  - build
+  - deploy
+
+before_script:
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh-client bash )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+build_image:
+  stage: build
+  script:
+    - 'npm link @angular/cli@14.0.7'
+    - 'npm run build'
+  artifacts:
+    paths:
+      - dist/timebank-frontend-pg/*
+
+
+deploy_fe:
+  stage: deploy
+  when: manual
+  script:
+    - 'tar -czvf dist/dist.tar.gz dist/timebank-frontend-pg/*'
+    - "ssh app@timebank-violet.btcmp.net 'sudo /opt/rm-fe.sh'"
+    - 'scp dist/dist.tar.gz app@timebank-violet.btcmp.net:~/'
+    - "ssh app@timebank-violet.btcmp.net 'sudo /opt/stage-fe.sh'"

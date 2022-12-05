@@ -1,0 +1,65 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <h4>New user registration</h4>
+        <div class="hr"></div>
+        <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput type="text" formControlName="firstName" required>
+
+            <mat-error *ngIf="firstName.errors && firstName.errors['required']">First name is required</mat-error>
+            <mat-error *ngIf="firstName.errors && firstName.errors['minlength']">First name must have at least
+                {{firstName.errors['minlength']['requiredLength']}} characters</mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput type="text" formControlName="lastName" required>
+
+            <mat-error *ngIf="lastName.errors && lastName.errors['required']">Last name is required</mat-error>
+            <mat-error *ngIf="lastName.errors && lastName.errors['minlength']">Last name must have at least
+                {{lastName.errors['minlength']['requiredLength']}} characters</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Phone number ( +421... )</mat-label>
+            <input matInput type="text" formControlName="phoneNumber">
+            <mat-error *ngIf="phoneNumber.errors && phoneNumber.errors['required']">Phone number is required</mat-error>
+            <mat-error *ngIf="phoneNumber.errors && phoneNumber.errors['pattern']">
+                Please enter a valid phone number.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <mat-error *ngIf="password.errors && password.errors['required']">Password is required</mat-error>
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Repeat password</mat-label>
+            <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword"
+                required>
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="confirmPassword.errors && confirmPassword.errors['required']">
+                Password confirmation is required
+            </mat-error>
+            <mat-error *ngIf="confirmPassword.errors && confirmPassword.errors['differentPasswords']">
+                Passwords do not match
+            </mat-error>
+
+        </mat-form-field>
+
+        <button type="submit" class="submit" mat-raised-button color="primary"
+        [disabled]="registerForm.invalid">Submit</button>
+    </form>
+</div>
+<!-- TODO: push data -->

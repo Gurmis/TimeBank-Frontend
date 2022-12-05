@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Rate Job</h1>
+<div mat-dialog-content>
+  <div class="container like">
+    <span class="likes"><mat-icon>thumb_up</mat-icon>{{ likes || 0}}</span>
+    <button
+      class="btn dialog like"
+      [disabled]="clicked"
+      (click)="sendLike(job.id); clicked = true"
+      cdkFocusInitial
+    >
+      Like
+    </button>
+  </div>
+
+  <div class="container hours">
+    <form
+      class="hoursForm"
+      (ngSubmit)="sendHours(job.id)"
+      [formGroup]="hoursForm"
+    >
+      <mat-form-field appearance="fill">
+        <input matInput required maxlength="3" formControlName="hoursLogged" />
+        <mat-hint>Hours</mat-hint>
+        <!-- <mat-error>Must be more than 0</mat-error> -->
+      </mat-form-field>
+    </form>
+    <button
+      type="submit"
+      class="btn dialog hours"
+      [disabled]="hoursForm.invalid || submitClicked"
+      (click)="sendHours(job.id); submitClicked = true"
+      cdkFocusInitial
+    >
+      <!-- <mat-icon>close</mat-icon> -->
+      Pay
+    </button>
+  </div>
+  <div class="container stars">
+    <app-rating
+      class="rating"
+      [rating]="rating"
+      [starCount]="starCount"
+      [ratingDisabled]="ratingDisabled"
+      (ratingUpdated)="onRatingChanged($event)"
+    ></app-rating>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button class="btn dialog close" 
+  mat-dialog-close cdkFocusInitial>
+    Close
+  </button>
+</div>

@@ -1,0 +1,98 @@
+button.btn.dialog {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background: rgb(216, 142, 114);
+  font-size: 16px;
+  color: white;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  border: none;
+  border-radius: 4px;
+  width: 55px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(216, 141, 114, 0.8);
+  }
+
+  &.close {
+    background: white;
+    color: inherit;
+  }
+
+  &:disabled {
+    background: rgba(216, 141, 114, 0.5);
+    cursor: inherit;
+  }
+}
+
+.mat-dialog-actions {
+  margin-bottom: -24px;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+h1 {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+
+  &.description {
+    margin: 5px 0;
+  }
+
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  gap: 5px;
+  min-width: 55px;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  align-self: center;
+  //   align-items: center;
+
+  &.hours {
+    & .mat-form-field {
+      width: 55px;
+      text-align: center;
+      padding: 0;
+      //   height: 30px;
+    }
+
+    .btn {
+      margin-top: 10px;
+    }
+  }
+
+  &.like {
+    margin-bottom: 25px;
+  }
+
+  &.stars {
+    justify-content: center;
+    margin-top: 25px;
+
+  
+  }
+}
+
+.mat-dialog-content {
+  min-height: 220px;
+}
+
+

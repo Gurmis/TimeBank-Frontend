@@ -1,0 +1,8 @@
+<button class="star" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" [disabled]="ratingDisabled"  (click)="onClick(i+1)">
+    <mat-icon>
+    {{ showIcon(i) }}
+  </mat-icon>
+</button>
+<!-- <p class="body-2">
+      Your rated <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span>
+  </p> -->

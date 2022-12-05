@@ -1,0 +1,46 @@
+<div class="container">
+    <form #jobUpdate="ngForm" (ngSubmit)="onSubmit(jobUpdate)" >
+      <h4>Editing job: {{currentJob?.name}}</h4>
+      <div class="hr"></div>
+      <mat-form-field appearance="fill">
+        <mat-label>Job title</mat-label>
+        <input minlength="3" matInput required  ngModel name="name" [ngModel]="currentJob?.name" (ngModelChange)="currentJob.name = $event"/>
+        <!-- <mat-hint>Please enter Job title</mat-hint> -->
+        <mat-error>Min length is 3 characters</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+        ngModel
+        name="description"
+        [ngModel]="currentJob?.description" (ngModelChange)="currentJob.description = $event"
+        maxlength="1000"
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="3"
+        cdkAutosizeMaxRows="10"
+        ></textarea>
+        <mat-error>Please fill in the description</mat-error>
+        
+        <span class="descriptionMaxError" *ngIf="descriptionInput.length == 1000"
+        >Max. number of characters 1000 reached</span
+        >
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+      <mat-label>Estimated Hours</mat-label>
+      <input matInput required ngModel name="timeEstimate"  [ngModel]="currentJob?.duration" (ngModelChange)="currentJob.duration = $event"/>
+      <!-- <mat-hint>Please enter Job title</mat-hint> -->
+      <mat-error>Please enter Estimated Hours</mat-error>
+    </mat-form-field>
+      <button
+        class="submit"
+        [disabled]="!jobUpdate.valid"
+        mat-raised-button
+        color="primary"
+      >
+        Save
+      </button>
+    </form>
+  </div>

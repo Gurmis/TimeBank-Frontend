@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>History of completed Jobs:</h2>
+  
+  <div class="container table">
+    <p class="timeBank">My Time Bank: <span>{{totalHours}} hours</span></p>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Job</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="hours">
+        <th mat-header-cell *matHeaderCellDef>Hours</th>
+        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="jobCompletionDate">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.date_finished | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="workedFor">
+        <th mat-header-cell *matHeaderCellDef>Worked for</th>
+        <td mat-cell *matCellDef="let element">{{ element.first_name_for + ' ' + element.last_name_for }}</td>
+      </ng-container>
+      
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <a class="btn back" routerLink="/user-section" routerLinkActive="active"><mat-icon>keyboard_return</mat-icon>Back to My Section</a>
+    
+  </div>
+</div>
+
