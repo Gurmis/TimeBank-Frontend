@@ -23,6 +23,7 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
 import { MyJobsComponent } from './components/my-jobs/my-jobs.component';
 import { CookieModule } from 'ngx-cookie';
 import { Page404Component } from './components/page404/page404.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 
 
@@ -48,7 +49,8 @@ import { Page404Component } from './components/page404/page404.component';
     DeleteDialogComponent,
     UserUpdateComponent,
     MyJobsComponent,
-    Page404Component
+    Page404Component,
+    LandingPageComponent
 
     
   ],

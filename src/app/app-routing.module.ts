@@ -13,6 +13,7 @@ import { MyJobsComponent } from './components/my-jobs/my-jobs.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
 import { AfterLoginGuard } from './guards/after-login.guard';
 import { Page404Component } from './components/page404/page404.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const routes: Routes = [
   { path: 'jobs', component: JobsComponent, canActivate: [AuthGuard]},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'personal-details', component: UserUpdateComponent, canActivate: [AuthGuard] },
   { path: 'my-jobs', component: MyJobsComponent, canActivate: [AuthGuard] },
   { path: 'log', component: HistoryLogComponent, canActivate: [AuthGuard] },
+  { path: '', component: LandingPageComponent, canActivate: [AfterLoginGuard] },
   { path: '**', component: Page404Component },
 ];
 
