@@ -138,6 +138,7 @@ export class UsersService {
           this.currentUserSubject.next(decoded);
           this.currentUser = this.currentUserSubject.asObservable();
           this.loggedUser = decoded;
+          document.cookie = `token=${token}; max-age=${60*60*2}`
 
           return true;
         }),
