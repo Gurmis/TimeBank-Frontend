@@ -27,6 +27,8 @@ export class AfterLoginGuard implements CanActivate {
     if (!this.usersService.loggedIn()) {
       return true;
     }
+
+    console.log(state.url)
     this.usersService.redirectAfterLogin = state.url;
     this.snackBarService.errorMessage(
       'You are already logged in!'

@@ -1,7 +1,7 @@
 <nav>
   <mat-toolbar>
     <div class="left">
-      <!-- <img class="logo" src="assets/images/Timebank logo.svg"> -->
+      <a routerLink="/">
       <svg
         class="logo"
         width="114"
@@ -20,8 +20,9 @@
           fill="#404040"
         />
       </svg>
+    </a>
     </div>
-    <div class="right">
+    <div *ngIf="navigationVisible" class="right">
 
       <span *ngIf="currentUser; then thenBlock; else elseBlock"></span>
 
