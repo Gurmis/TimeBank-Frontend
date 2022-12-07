@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HoursService } from 'src/app/services/hours.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { LikesService } from 'src/app/services/likes.service';
@@ -48,6 +48,7 @@ export class JobsDialogComponent implements OnInit {
     private likesService: LikesService,
     private hoursService: HoursService,
     private route: ActivatedRoute,
+    private router: Router,
     private snackbarService: SnackbarService,
     private userService: UsersService
   ) {}
@@ -60,6 +61,7 @@ export class JobsDialogComponent implements OnInit {
     this.loggedUserId = this.userService.loggedUser.id;
     this.job = this.data.job;
     this.likes = this.data.job.likesCount;
+    console.log(this.router.url)
     }
 
   sendHours(jobId: number) {

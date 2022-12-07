@@ -157,7 +157,7 @@ export class UsersService {
       this.currentUserSubject.next('');
       this.currentUser = this.currentUserSubject.value;
       this.loggedUser = '';
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/');
       this.cookieService.remove('token');
       return this.httpClient.post(`${this.serverUrl}logout`, {
         responseType: 'text',
