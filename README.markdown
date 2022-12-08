@@ -1,1 +1,1 @@
-Violet :: Timebank :: Angular Frontend
+TimeBank App
