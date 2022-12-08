@@ -11,7 +11,7 @@ import { SnackbarService } from '../services/snackbar.service';
 import { UsersService } from '../services/users.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AfterLoginGuard implements CanActivate {
   constructor(
@@ -28,13 +28,9 @@ export class AfterLoginGuard implements CanActivate {
       return true;
     }
 
-    console.log(state.url)
     this.usersService.redirectAfterLogin = state.url;
-    this.snackBarService.errorMessage(
-      'You are already logged in!'
-    );
+    this.snackBarService.errorMessage('You are already logged in!');
     this.router.navigateByUrl('/jobs');
     return false;
   }
-  
 }

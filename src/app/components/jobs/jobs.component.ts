@@ -150,8 +150,6 @@ export class JobsComponent implements OnInit {
       next: (data) => {
         this.likes = data;
       },
-      // error: (error) => console.log('Server not available!'),
-      // error: err => this.errorText = "Server not available!"
     });
   }
 }

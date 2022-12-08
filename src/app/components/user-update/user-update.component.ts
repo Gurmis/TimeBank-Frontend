@@ -63,7 +63,6 @@ export class UserUpdateComponent implements OnInit {
     this.user = this.updateUserForm.value;
     this.userService.updateUser(this.loggedUserId, this.user).subscribe({
       next: (data) => {
-        console.log(data);
         this.snackbarService.successMessage('User data updated successfully');
         this.router.navigate(['/user-section']);
       },

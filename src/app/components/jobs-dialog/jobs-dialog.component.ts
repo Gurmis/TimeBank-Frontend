@@ -61,8 +61,7 @@ export class JobsDialogComponent implements OnInit {
     this.loggedUserId = this.userService.loggedUser.id;
     this.job = this.data.job;
     this.likes = this.data.job.likesCount;
-    console.log(this.router.url)
-    }
+  }
 
   sendHours(jobId: number) {
     this.hours = {
@@ -80,14 +79,9 @@ export class JobsDialogComponent implements OnInit {
   }
 
   sendLike(serviceId: number) {
-    this.likesService.postLike(this.job.id).subscribe(
-      (data) => {
-        this.getLikes();
-      }
-
-      // error: (error) => console.log('Server not available!'),
-      // error: err => this.errorText = "Server not available!"
-    );
+    this.likesService.postLike(this.job.id).subscribe((data) => {
+      this.getLikes();
+    });
   }
 
   getLikes() {
@@ -96,14 +90,10 @@ export class JobsDialogComponent implements OnInit {
         this.likes = data[0].likes;
         this.newLikes.emit(this.likes);
       },
-
-      // error: (error) => console.log('Server not available!'),
-      // error: err => this.errorText = "Server not available!"
     });
   }
 
   onRatingChanged(rating: number) {
-    // console.log(rating);
     this.rating = rating;
     this.starSelect.emit(this.rating);
   }

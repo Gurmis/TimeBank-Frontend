@@ -17,8 +17,8 @@ import { UserSectionComponent } from '../components/user-section/user-section.co
 @Injectable({ providedIn: 'root' })
 export class JobsService {
   public messageSubject = new Subject();
-// serverUrl: string = 'https://localhost:5000/';
-serverUrl: string = 'https://concise-upgrade-370310.lm.r.appspot.com/';
+  // serverUrl: string = 'https://localhost:5000/';
+  serverUrl: string = 'https://concise-upgrade-370310.lm.r.appspot.com/';
   currentJobId: number = 0;
 
   constructor(
@@ -33,7 +33,9 @@ serverUrl: string = 'https://concise-upgrade-370310.lm.r.appspot.com/';
   //   return this.httpClient.get<Job[]>(this.serverUrl + query, this.usersService.header);
   // }
   getData(query: string): Observable<Job[] | any> {
-    return this.httpClient.get<Job[] | any>(this.serverUrl + query, {withCredentials: true});
+    return this.httpClient.get<Job[] | any>(this.serverUrl + query, {
+      withCredentials: true,
+    });
   }
 
   // POST Method
@@ -45,22 +47,22 @@ serverUrl: string = 'https://concise-upgrade-370310.lm.r.appspot.com/';
   //GET requests
   getJobById(id: number): Observable<Job[] | any> {
     return this.httpClient
-      .get<Job[]>(this.serverUrl + 'jobs/' + id, {withCredentials: true})
+      .get<Job[]>(this.serverUrl + 'jobs/' + id, { withCredentials: true })
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   getUserJobs(userId: number): Observable<Job[]> {
-    // console.log(userId)
     return this.httpClient
-      .get<Job[]>(
-        `${this.serverUrl}users/${userId}/jobs`, {withCredentials: true} )
+      .get<Job[]>(`${this.serverUrl}users/${userId}/jobs`, {
+        withCredentials: true,
+      })
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   //POST request
   registerJob(job: Job): Observable<Job> {
     return this.httpClient
-      .post<Job>(this.serverUrl + 'jobs', job, {withCredentials: true})
+      .post<Job>(this.serverUrl + 'jobs', job, { withCredentials: true })
       .pipe(
         tap((data) => {
           this.snackbarService.successMessage(
@@ -80,20 +82,16 @@ serverUrl: string = 'https://concise-upgrade-370310.lm.r.appspot.com/';
 
   //PUT request
   updateJob(job: Job | any, id: number): Observable<Job> {
-    return this.httpClient.put<Job>(
-      this.serverUrl + 'jobs/' + id,
-      job,
-      {withCredentials: true}
-    )
-    .pipe(catchError((error) => this.handleError(error)));
+    return this.httpClient
+      .put<Job>(this.serverUrl + 'jobs/' + id, job, { withCredentials: true })
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   //DELETE request
   deleteJob(id: number): Observable<Job> {
-    return this.httpClient.delete<Job>(
-      this.serverUrl + 'jobs/' + id,
-      {withCredentials: true}
-    ).pipe(catchError((error) => this.handleError(error)));
+    return this.httpClient
+      .delete<Job>(this.serverUrl + 'jobs/' + id, { withCredentials: true })
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   handleError(error: any): Observable<never> {
@@ -127,6 +125,4 @@ serverUrl: string = 'https://concise-upgrade-370310.lm.r.appspot.com/';
   setCurrentJobId(jobId: any) {
     this.currentJobId = jobId;
   }
-
-
 }

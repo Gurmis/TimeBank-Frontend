@@ -9,7 +9,7 @@ export class RatingComponent implements OnInit {
   @Input('rating') public rating: number = 0;
   @Input('starCount') public starCount: number = 0;
   @Input('ratingDisabled') public ratingDisabled: boolean = true;
-  
+
   @Output() public ratingUpdated = new EventEmitter();
 
   public ratingArr: number[] = [];
@@ -17,7 +17,6 @@ export class RatingComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    //console.log("a "+this.starCount)
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
