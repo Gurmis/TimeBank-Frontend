@@ -80,7 +80,7 @@ export class JobsComponent implements OnInit {
           averageRating: Math.ceil(item.averageRating),
           likesCount: item.likesCount,
           user: item.user,
-        }));
+        })).filter(item => item.user.id != this.loggedUserId);
       },
       error: (error) => console.log('Server not available!'),
     });
